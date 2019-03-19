@@ -1,0 +1,159 @@
+/* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
+
+@import 'src/styles/utils/variables';
+@import 'src/styles/utils/core';
+
+@import url('https://js.arcgis.com/3.27/esri/css/esri.css');
+
+.container-EsriMap {
+  width:100%;
+  height: 93%;
+  margin-top:20px;
+  margin-right:auto;
+  margin-bottom:0;
+  margin-left:auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+.loading {
+  padding: 1em;
+}
+
+.map-header {
+  align-items: center;
+  background: $brand;
+  box-shadow: 0 0.1em 1.5em rgba($dark-grey, 0.5);
+  color: $white;
+  display: flex;
+  padding: 1em;
+}
+
+  .map-header__toggle {
+    background: transparent;
+    border: 0.15rem solid $white;
+    border-left: 0;
+    border-right: 0;
+    cursor: pointer;
+    font-size: 0;
+    height: 1.5rem;
+    margin-right: 1rem;
+    position: relative;
+    width: 2rem;
+
+    &::after {
+      background: $white;
+      content: '';
+      height: 0.15rem;
+      left: 0;
+      margin-top: -0.075rem;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+    }
+  }
+
+.view-sidebar {
+  background-color: #fff;
+  padding: 2em 1em;
+
+  &.ng-sidebar--opened.ng-sidebar--over {
+    box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+  }
+}
+
+.property-sidebar {
+  background-color: #fff;
+  padding: 2em 1em;
+
+  &.ng-sidebar--opened.ng-sidebar--over {
+    box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+  }
+}
+
+.net-sidebar {
+  background-color: #fff;
+  padding: 2em 1em;
+
+  &.ng-sidebar--opened.ng-sidebar--over {
+    box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+  }
+}
+
+.map-contents{
+  padding: 0 2em;
+}
+
+.demo-control {
+  background-color: $light-grey;
+  border: 1px solid $dark-grey;
+  cursor: pointer;
+  margin-bottom: 0.5em;
+  padding: 0.5em 2em;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: $dark-grey;
+    color: $white;
+  }
+}
+
+.input-space {
+    padding-left: 15px;
+  }
+
+  .slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }
+  .fast .toggle-group { transition: left 0.1s; -webkit-transition: left 0.1s; }
+  .quick .toggle-group { transition: none; -webkit-transition: none; }
+
+.PropertyInspectorButton {
+  position: fixed;
+  top: 6%;
+  right: 50%;
+}
+
+.NetButton {
+  position: fixed;
+  bottom: 30px;
+  right: 50%;
+
+}
+
+.ParticipantsButton {
+  position: fixed;
+  bottom: 50%;
+  left: 0;
+}
+
+.PropertyInspectorContent {
+  padding: 0 2em;
+  height: 97%;
+  margin: 0 auto; /* Added */
+      float: none; /* Added */
+      margin-bottom: 10px; /* Added */
+}
+
+.netPlanContent {
+  padding: 0 2em;
+  margin: 0 auto; /* Added */
+      float: none; /* Added */
+      margin-bottom: 10px; /* Added */
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

@@ -1,0 +1,212 @@
+<ng-sidebar-container
+(onBackdropClicked)="_onBackdropClicked()">
+
+<ng-sidebar
+      [(opened)]="_opened"
+      [mode]="_MODES[_modeNum]"
+      [keyClose]="_keyClose"
+      [position]="_POSITIONS[_positionNum]"
+      [dock]="_dock"
+      [dockedSize]="'80px'"
+      [autoCollapseHeight]="_autoCollapseHeight"
+      [autoCollapseWidth]="_autoCollapseWidth"
+      [closeOnClickOutside]="_closeOnClickOutside"
+      [closeOnClickBackdrop]="_closeOnClickBackdrop"
+      [showBackdrop]="_showBackdrop"
+      [animate]="_animate"
+      [trapFocus]="_trapFocus"
+      [autoFocus]="_autoFocus"
+      [sidebarClass]="'view-sidebar'"
+      [ariaLabel]="'Views sidebar'"
+      (onOpenStart)="_onOpenStart()"
+      (onOpened)="_onOpened()"
+      (onCloseStart)="_onCloseStart()"
+      (onClosed)="_onClosed()"
+      (onTransitionEnd)="_onTransitionEnd()">
+
+
+<div class="card text-dark" style="width: 18rem;">
+  <div class="card-body">
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <h5 class="card-title">Views</h5>
+            <button type="button" class="close" aria-label="Close" (click)="_toggleOpened()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <br>
+        <hr>
+
+
+
+
+  </div>
+</div>
+</ng-sidebar>
+
+<ng-sidebar [(opened)]="_openedParticipantsSidebar"
+    [position]="_positionParticipantsSidebar"
+    [mode]="_modeParticipantsSidebar"
+    [sidebarClass]="'property-sidebar'"
+    [closeOnClickOutside]="_closeOnClickOutside"
+    [dockedSize]="'40px'"
+    [animate]="_animateParticipantsSidebar"
+    [trapFocus]="_trapFocusParticipantsSidebar"
+    [autoFocus]="_autoFocusParticipantsSidebar"
+    [keyClose]="_keyCloseParticipantsSidebar"
+
+    >
+
+  <div class="card text-dark bg-light" style="width: 18rem;">
+    <div class="card-body">
+          <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+              <h5 class="card-title">Property Inspector</h5>
+              <button type="button" class="close" aria-label="Close" (click)="_toggleParticipantsSidebar()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <br>
+          <hr>
+
+
+    </div>
+  </div>
+</ng-sidebar>
+
+
+<ng-sidebar [(opened)]="_openedPropertySidebar"
+    [position]="_positionPropertySidebar"
+    [mode]="_modePropertySidebar"
+    [sidebarClass]="'property-sidebar'"
+    [closeOnClickOutside]="_closeOnClickOutside"
+    [animate]="_animatePropertySidebar"
+    [trapFocus]="_trapFocusPropertySidebar"
+    [autoFocus]="_autoFocusPropertySidebar"
+    [keyClose]="_keyClosePropertySidebar"
+
+    >
+
+  <div class="card text-dark bg-light w-100 PropertyInspectorContent">
+    <div class="card-body">
+          <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+              <h5 class="card-title">Property Inspector</h5>
+              <button type="button" class="close" aria-label="Close" (click)="_togglePropertySidebar()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <br>
+          <hr>
+    <div class="container">
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>General:</legend>
+          <div class="form-group form-row pt-2 pb-2">
+            <label for="name" class="col-xs-3 col-form-label ">Name</label>
+            <div class="col-xs-6 ml-5">
+              <input type="text" readonly class="form-control form-control-sm" id="name" value="BATAAN">
+            </div>
+          </div>
+            <hr>
+          <div class="form-group row pt-2 pb-2">
+            <label for="number" class="col-xs-3 col-form-label">Number</label>
+            <div class="col-xs-6 ml-5">
+              <input type="text" readonly class="form-control form-control-sm" id="number" placeholder="LH5">
+            </div>
+          </div>
+            <hr>
+            <div class="form-group row pt-2 pb-2">
+              <label for="abbreviation" class="col-xs-3 col-form-label">Abbreviation</label>
+              <div class="col-xs-6 ml-3">
+                <input type="text" readonly class="form-control form-control-sm" id="abbreviation" placeholder="BAT">
+              </div>
+            </div>
+              <hr>
+              <div class="form-group row pt-2 pb-2">
+                <label for="Type" class="col-xs-3 col-form-label">Type</label>
+                <div class="col-xs-7 ml-5">
+                  <select class="custom-select" id="types">
+                  <option selected>Degress Minutes Seconds</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                </div>
+              </div>
+                <hr>
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</ng-sidebar>
+
+<ng-sidebar [(opened)]="_openedNetPlanSidebar"
+    [position]="_positionNetPlanSidebar"
+    [mode]="_modeNetPlanSidebar"
+    [sidebarClass]="'net-sidebar'"
+    [closeOnClickOutside]="_closeOnClickOutsideNetPlan"
+    [animate]="_animateNetPlanSidebar"
+    [trapFocus]="_trapFocusNetPlanSidebar"
+    [autoFocus]="_autoFocusNetPlanSidebar"
+    [keyClose]="_keyCloseNetPlanSidebar"
+
+    >
+
+  <div class="card text-dark bg-light w-50 netPlanContent">
+    <div class="card-body">
+          <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+              <h5 class="card-title">Net Plan</h5>
+              <button type="button" class="close" aria-label="Close" (click)="_toggleNetPlanSidebar()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <br>
+          <hr>
+
+
+       <div class="container-fluid" [ngStyle]="style" id="myGrid" class="ag-theme-balham">
+           <ag-grid-angular
+            style="width: 100%; height: 100%;"
+             #agGrid
+             [rowData]="rowData"
+             [columnDefs]="columnDefs"
+             [defaultColDef]="defaultColDef"
+             rowSelection="multiple"
+             [pagination]="true"
+             (gridReady)="onGridReady($event)"
+             (firstDataRendered)="onFirstDataRendered($event)"
+             >
+           </ag-grid-angular>
+       </div>
+
+
+
+    </div>
+  </div>
+</ng-sidebar>
+
+<div ng-sidebar-content>
+<header class="map-header">
+  <button (click)="_toggleOpened()" class="map-header__toggle"></button>
+  <span>Views</span>
+  <button type="button" class="btn btn-info btn-sm ml-3" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
+  <button type="button" class="btn btn-info btn-sm ml-3" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button>
+</header>
+
+<section class="map-contents">
+
+    <div id="viewDiv" class="container-EsriMap">
+        <esri-map [mapProperties]="mapProperties" [mapViewProperties]="mapViewProperties" (mapInit)="onMapInit($event)"></esri-map>
+    </div>
+    <!-- Button for opening PropertyInspector -->
+    <button type="button" class="btn btn-success PropertyInspectorButton fa fa-cog fa-2x" (click)="_togglePropertySidebar()" ></button>
+
+    <!-- Button to open the Net Sidebar slide from bottom -->
+    <button type="button" class="btn btn-success NetButton fa fa-chevron-circle-up fa-2x" (click)="_toggleNetPlanSidebar()" ></button>
+
+    <!-- Button to open Participants -->
+      <button type="button" class="btn btn-success ParticipantsButton fa fa-list fa-2x" (click)="_toggleParticipantsSidebar()" ></button>
+
+</section>
+</div>
+</ng-sidebar-container>
