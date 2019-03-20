@@ -25,19 +25,51 @@
       (onTransitionEnd)="_onTransitionEnd()">
 
 
-<div class="card text-dark" style="width: 18rem;">
+<div class="card text-dark" style="width: 16rem;">
   <div class="card-body">
-        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-            <h5 class="card-title">Views</h5>
-            <button type="button" class="close" aria-label="Close" (click)="_toggleOpened()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <br>
-        <hr>
+        <nav id="sidebar">
+          <div class="sidebar-header">
+              <h3>View List</h3>
+          </div>
 
-
-
+          <ul class="list-unstyled components">
+              <p>RTSO</p>
+              <li class="active">
+                  <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">COP</a>
+                  <ul class="collapse list-unstyled" id="homeSubmenu">
+                      <li>
+                          <a href="#/arcis">Arcgis map</a>
+                      </li>
+                      <li>
+                          <a href="#/leaflet">Leaflet</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="#/restrictionEditor">Restrictions Editor</a>
+              </li>
+              <li>
+                  <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Outputs</a>
+                  <ul class="collapse list-unstyled" id="pageSubmenu">
+                      <li>
+                          <a href="#/message">Message</a>
+                      </li>
+                      <li>
+                          <a href="#/report">Report</a>
+                      </li>
+                      <li>
+                          <a href="#/generateInventory">Generate Inventory</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="#/spectrumDisplay">Spectrum Display</a>
+              </li>
+              <li>
+                  <a href="#/waterfall">Waterfall</a>
+              </li>
+          </ul>
+      </nav>
 
   </div>
 </div>
@@ -47,27 +79,28 @@
     [position]="_positionParticipantsSidebar"
     [mode]="_modeParticipantsSidebar"
     [sidebarClass]="'property-sidebar'"
-    [closeOnClickOutside]="_closeOnClickOutside"
+    [closeOnClickOutside]="_closeOnClickOutsideParticipants"
     [dockedSize]="'40px'"
     [animate]="_animateParticipantsSidebar"
     [trapFocus]="_trapFocusParticipantsSidebar"
     [autoFocus]="_autoFocusParticipantsSidebar"
     [keyClose]="_keyCloseParticipantsSidebar"
-
     >
 
-  <div class="card text-dark bg-light" style="width: 18rem;">
+  <div class="card text-dark bg-light ParticipantsContents" style="width: 16rem;">
     <div class="card-body">
           <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-              <h5 class="card-title">Property Inspector</h5>
+              <h5 class="card-title">Participants</h5>
+              <div>
+               <button type="button" class="fa fa-thumb-tack fa-1x" (click)="_toggleCloseOnClickOutsideParticipants()" >{{_closeOnClickOutsideParticipants ? 'false' : 'true'}}</button>
+             </div>
               <button type="button" class="close" aria-label="Close" (click)="_toggleParticipantsSidebar()">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
           <br>
           <hr>
-
-
+             <tree-root [nodes]="nodes"  [focused]="true" [options]="options"></tree-root>
     </div>
   </div>
 </ng-sidebar>
@@ -77,18 +110,20 @@
     [position]="_positionPropertySidebar"
     [mode]="_modePropertySidebar"
     [sidebarClass]="'property-sidebar'"
-    [closeOnClickOutside]="_closeOnClickOutside"
+    [(closeOnClickOutside)]="_closeOnClickOutsideProperty"
     [animate]="_animatePropertySidebar"
     [trapFocus]="_trapFocusPropertySidebar"
     [autoFocus]="_autoFocusPropertySidebar"
     [keyClose]="_keyClosePropertySidebar"
-
     >
 
   <div class="card text-dark bg-light w-100 PropertyInspectorContent">
     <div class="card-body">
           <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
               <h5 class="card-title">Property Inspector</h5>
+              <div>
+               <button type="button" class="fa fa-thumb-tack fa-1x" (click)="_toggleCloseOnClickOutsideProperty()" >{{_closeOnClickOutsideProperty ? 'false' : 'true'}}</button>
+             </div>
               <button type="button" class="close" aria-label="Close" (click)="_togglePropertySidebar()">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -96,7 +131,7 @@
           <br>
           <hr>
     <div class="container">
-        <form class="form-horizontal">
+        <form>
           <fieldset>
             <legend>General:</legend>
           <div class="form-group form-row pt-2 pb-2">
@@ -105,21 +140,21 @@
               <input type="text" readonly class="form-control form-control-sm" id="name" value="BATAAN">
             </div>
           </div>
-            <hr>
+
           <div class="form-group row pt-2 pb-2">
             <label for="number" class="col-xs-3 col-form-label">Number</label>
             <div class="col-xs-6 ml-5">
               <input type="text" readonly class="form-control form-control-sm" id="number" placeholder="LH5">
             </div>
           </div>
-            <hr>
+
             <div class="form-group row pt-2 pb-2">
               <label for="abbreviation" class="col-xs-3 col-form-label">Abbreviation</label>
               <div class="col-xs-6 ml-3">
                 <input type="text" readonly class="form-control form-control-sm" id="abbreviation" placeholder="BAT">
               </div>
             </div>
-              <hr>
+
               <div class="form-group row pt-2 pb-2">
                 <label for="Type" class="col-xs-3 col-form-label">Type</label>
                 <div class="col-xs-7 ml-5">
@@ -131,7 +166,7 @@
                 </select>
                 </div>
               </div>
-                <hr>
+
           </fieldset>
         </form>
       </div>
@@ -156,6 +191,9 @@
     <div class="card-body">
           <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
               <h5 class="card-title">Net Plan</h5>
+              <div>
+               <button type="button" class="fa fa-thumb-tack fa-1x" (click)="_toggleCloseOnClickOutsideNetPlan()" >{{_closeOnClickOutsideNetPlan ? 'false' : 'true'}}</button>
+             </div>
               <button type="button" class="close" aria-label="Close" (click)="_toggleNetPlanSidebar()">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -185,12 +223,13 @@
   </div>
 </ng-sidebar>
 
+
 <div ng-sidebar-content>
 <header class="map-header">
   <button (click)="_toggleOpened()" class="map-header__toggle"></button>
   <span>Views</span>
-  <button type="button" class="btn btn-info btn-sm ml-3" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
-  <button type="button" class="btn btn-info btn-sm ml-3" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button>
+  <!-- <button type="button" class="btn btn-info btn-sm ml-3" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
+  <button type="button" class="btn btn-info btn-sm ml-3" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button> -->
 </header>
 
 <section class="map-contents">
