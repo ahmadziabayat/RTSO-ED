@@ -17,6 +17,7 @@ import { AngularSplitModule } from 'angular-split';
 import { PlotlyModule } from 'angular-plotly.js'; // an angular plotly.js component
 import { ColorPickerModule } from 'ngx-color-picker'; // angular color picker
 
+
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgGridModule } from 'ag-grid-angular'; // for showing data in the table
