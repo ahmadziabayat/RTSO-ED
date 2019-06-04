@@ -166,6 +166,33 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+<<<<<<< HEAD
+/* The side navigation menu */
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+/* Style sidebar links */
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #f1f1f1;
+=======
 #sidebar {
     width: 250px;
     position: fixed;
@@ -219,4 +246,5 @@ ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
+>>>>>>> 43558cb7ea9ec06c41d772a23a4e016062d755cb
 }
