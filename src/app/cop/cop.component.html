@@ -187,7 +187,7 @@
 
     >
 
-  <div class="card text-dark bg-light w-50 netPlanContent">
+  <div class="card text-dark bg-light w-100 netPlanContent">
     <div class="card-body">
           <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
               <h5 class="card-title">Net Plan</h5>
@@ -226,10 +226,21 @@
 
 <div ng-sidebar-content>
 <header class="map-header">
-  <button (click)="_toggleOpened()" class="map-header__toggle"></button>
-  <span>Views</span>
-  <!-- <button type="button" class="btn btn-info btn-sm ml-3" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
-  <button type="button" class="btn btn-info btn-sm ml-3" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button> -->
+  <button (click)="_toggleOpened()" class="map-header__toggle mb-3"></button>
+
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-between mb-3">
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link text-light active " href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link text-light" href="#import">Import</a>
+        <a class="nav-item nav-link text-light" href="#analyze">Analyze</a>
+        <a class="nav-item nav-link text-light" href="#message">Message</a>
+        <a class="nav-item nav-link text-light" href="#tools">Tools</a>
+      </div>
+    </div>
+</nav>
+
+
 </header>
 
 <section class="map-contents">

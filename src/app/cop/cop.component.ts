@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output,ElementRef, ViewChild, EventEmitter  } from '@angular/core';
 import { EsriModuleProvider } from 'angular-esri-components';
-import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
+import { TREE_ACTIONS, KEYS, ITreeOptions } from 'angular-tree-component';
 import { HttpClient } from '@angular/common/http';
+import { ColorFormats } from 'ngx-color-picker/dist/lib/formats';
 
 @Component({
   selector: 'app-cop',
@@ -12,7 +13,7 @@ export class CopComponent implements OnInit {
 
 
   // Code for table
-   private gridApi;
+   private gridApi : any;
    private gridColumnApi;
 
    private columnDefs;
@@ -41,7 +42,7 @@ export class CopComponent implements OnInit {
      .get("assets/vehicles.json")
      .subscribe(data => {
        this.rowData = data;
-       console.log('data:'+JSON.stringify(this.rowData));
+       // console.log('data:'+JSON.stringify(this.rowData));
      });
 
  }
@@ -173,29 +174,34 @@ export class CopComponent implements OnInit {
     }
   };
 
+
+
   @Input() portalItemId: string;
 
   @Output() mapInit = new EventEmitter();
 
 
-  onMapInit(mapInfo: {map: __esri.Map, mapView: __esri.MapView}) {
+  onMapInit(mapInfo: {map: __esri.Map, mapView: __esri.MapView, mapSymbol: __esri.Symbol}) {
     this.map = mapInfo.map;
     this.mapView = mapInfo.mapView;
 
 
+
     // add a layer with sublayers to map
     this.moduleProvider
-      .require([ "esri/Map",
-      "esri/views/SceneView",
-      "esri/kernel"
+      .require([
+      "esri/kernel",
+
      ])
       .then(
-        ([Map, SceneView, esriNS]) => {
+        ([esriNS ]) => {
           // const view = new SceneView({
           //   scale: 123456789,
           //   container: "viewDiv",  // Reference to the DOM node that will contain the view
           //   map: this.map  // References the map object created in step 3
           // });
+
+
         console.log('kernel Version: '+ esriNS.version);
 
         })
@@ -203,6 +209,7 @@ export class CopComponent implements OnInit {
           // handle any errors
           console.error('Error from arcgis map: '+ err);
         });
+
   }
 
 
